@@ -1,28 +1,15 @@
 <template>
-  <loader v-if="loading" />
-  <parent v-if="!loading" />
+  <img src="../assets/Loading_icon.gif" />
+  <h2>Loading tasks...</h2>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import loader from "./components/loader.vue";
 
-import parent from "./components/showTasks.vue";
 @Options({
-  components: {
-    parent,
-    loader,
-  },
+  components: {},
 })
-export default class App extends Vue {
-  loading = true;
-
-  mounted() {
-    setTimeout(() => {
-      this.loading = !this.loading;
-    }, 1500);
-  }
-}
+export default class loader extends Vue {}
 </script>
 
 <style lang="scss">
