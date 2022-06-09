@@ -1,10 +1,9 @@
 <template>
   <div class="taskContainer">
-    <h2>{{ task.title }}</h2>
+    <h2 :class="[{ linethrough: task.done }]">{{ task.title }}</h2>
 
     <div class="btncontainer">
-      <h4 v-if="task.done">done!</h4>
-      <button id="donebtn" @click="emit" v-if="!task.done">
+      <button v-if="!task.done" id="donebtn" @click="emit">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -18,6 +17,7 @@
           />
         </svg>
       </button>
+      <button class="undobtn" v-if="task.done" @click="emit">undo</button>
 
       <button id="deletebtn" @click="deleteTask">
         <svg
@@ -96,6 +96,21 @@ export default class propTask extends Vue {
 
   padding: 3px 5px;
   background-color: rgb(236, 236, 236);
+}
+
+.undobtn {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  border: none;
+
+  padding: 8px 3px;
+  background-color: red;
+  color: white;
+}
+
+.linethrough {
+  text-decoration: line-through;
 }
 
 button:hover {

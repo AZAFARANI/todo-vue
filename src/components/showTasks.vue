@@ -32,7 +32,8 @@ export default class parent extends Vue {
   Tasks: Task[] = [new Task("Study"), new Task("exercise"), new Task("clean")];
 
   handleclick(i: number) {
-    this.Tasks[i].done = true;
+    this.Tasks[i].done = !this.Tasks[i].done;
+    console.log(this.Tasks[i]);
   }
 
   showNewTask(newTask: string) {
